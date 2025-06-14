@@ -18,6 +18,7 @@ function getIconName(weatherDesc) {
   return "weather_partly_cloudy"; // default fallback
 }
 
+
 btnEle.onclick = function () {
   if (inputEle.value.trim() === "") {
     alert("Please enter some location");
@@ -45,6 +46,18 @@ btnEle.onclick = function () {
         // ✅ Update icon based on weather description
         const iconName = getIconName(description);
         icon.textContent = iconName;
+
+     const timezoneOffset = data.timezone; // seconds
+        const utc = new Date().getTime() + new Date().getTimezoneOffset() * 60000;
+        const localTime = new Date(utc + 1000 * timezoneOffset);
+
+        const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+        const day = days[localTime.getDay()];
+        const date = localTime.toLocaleDateString();
+        const time = localTime.toLocaleTimeString();
+
+        document.getElementById("datetime").innerText = `${day}, ${date} ${time}`;
+
       })
       .catch(() => {
         alert("Enter a valid location");

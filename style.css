@@ -30,6 +30,15 @@ section{
         height: 30px;
         font-size: medium;
     }
+    #datetime {
+  color: white;
+  font-size: medium;
+  font-weight: bold;
+}
+#datetime{
+    font-size: large;
+    
+}
     
     .btns{
         display: flex;
